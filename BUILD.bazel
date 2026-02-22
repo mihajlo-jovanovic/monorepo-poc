@@ -1,0 +1,16 @@
+package(default_visibility = ["//visibility:public"])
+
+alias(
+    name = "build_all",
+    actual = "//:repo_bundle",
+)
+
+genrule(
+    name = "repo_bundle",
+    srcs = [
+        "//ui:ui_bundle",
+        "//api:api_bundle",
+    ],
+    outs = ["repo_bundle.txt"],
+    cmd = "cat $(SRCS) > $@",
+)

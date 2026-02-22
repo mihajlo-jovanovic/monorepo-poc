@@ -1,0 +1,16 @@
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "api_srcs",
+    srcs = [
+        "main.py",
+        "requirements.txt",
+    ],
+)
+
+genrule(
+    name = "api_bundle",
+    srcs = [":api_srcs"],
+    outs = ["api_bundle.txt"],
+    cmd = "cat $(SRCS) > $@",
+)
