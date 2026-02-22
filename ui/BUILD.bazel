@@ -1,0 +1,16 @@
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "ui_srcs",
+    srcs = [
+        "package.json",
+        "src/index.js",
+    ],
+)
+
+genrule(
+    name = "ui_bundle",
+    srcs = [":ui_srcs"],
+    outs = ["ui_bundle.txt"],
+    cmd = "cat $(SRCS) > $@",
+)
